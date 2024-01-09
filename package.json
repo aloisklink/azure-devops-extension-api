@@ -7,7 +7,18 @@
     "url": "https://github.com/Microsoft/azure-devops-extension-api.git"
   },
   "scripts": {
-    "build": "node buildpackage.js"
+    "build": "node buildpackage.js",
+    "prepare": "tsc --project tsconfig.esm.json"
+  },
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./esm/index.js"
+    },
+    "./*": {
+      "require": "./*/index.js",
+      "import": "./esm/*/index.js"
+    }
   },
   "keywords": [
     "extensions",
